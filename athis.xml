@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="/Users/maudmelinand/Desktop/LostMa divers/Release/out/witness_v3.rng"
+            type="application/xml"
+            schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc xml:id="athis_test">
+            <titleStmt>
+                <title>"Athis et Prophilias" (1201 to 1300) p, in ms Latin 16433</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Cette publication est un test de conformité de l'ODD witness_v3.</p>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc type="citation" is-excerpt="yes">
+                    <msIdentifier>
+                        <idno heurist="55200"/>
+                    </msIdentifier>
+                    <msFrag>
+                        <msIdentifier>
+                            <settlement>Paris</settlement>
+                            <repository viaf="137156173" heurist_id="43932">Bibliothèque nationale de France</repository>
+                            <!-- ici ajout d'un @type pour collection qui permet d'input les données de "collection of fragments" -->
+                            <collection>
+                                <location known="no"/>
+                            </collection>
+                            <idno heurist="55200"/>
+                            <idno type="current">ms Latin 16433</idno>
+                            <idno type="old">ms Latin 16433</idno>
+                        </msIdentifier>
+                        <physDesc>
+                            <decoDesc type="rubrication">
+                                <ab>The decoration is a rubrication.</ab>
+                            </decoDesc>
+                            <handDesc type="praegothica" subtype="bastarda"/>
+                            <objectDesc>
+                                <layoutDesc>
+                                  <layout writtenLines="42"/>
+                                  <layout columns="2"/>
+                                  <layout>
+                                      <dimensions type="leaves">
+                                          <height>24,4 centimètres</height>
+                                          <width>13,2 centimètres</width>
+                                      </dimensions>
+                                      <dimensions type="written">
+                                          <height>16 centimètres</height>
+                                          <width>12 centimètres</width>
+                                      </dimensions>
+                                  </layout>
+                                </layoutDesc>
+                            </objectDesc>
+                        </physDesc>
+                        <msContents>
+                           <msItem>
+                               <!-- Est-ce qu'on indique le locus au niveau du msFrag ou au niveau du msDesc ? -->
+                               <locus from="12-23">Renvoie au w_observed_on_pages</locus>
+                           </msItem>
+                        </msContents>
+                        <additional>
+                            <surrogates>
+                                 <digitization>
+                                     <idno/>
+                                     <ptr/>
+                                 </digitization>
+                            </surrogates>
+                        </additional>
+                    </msFrag>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <langUsage>
+                <language ident="48682.0">bourg., fro (Old French)</language>
+            </langUsage>
+            <creation>
+                <date when="1201-1300" source="Jonas" certainty="unknown">XIIIe siècle</date>
+            </creation>
+        </profileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <p>
+                <!-- Ici sera ajouté l'HTR du témoin -->
+            </p>
+        </body>
+    </text>
+</TEI>
