@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>ODD test pour la modélisation : schéma spécifique aux éléments des tables text + story</title>
+        <author>Maud Mélinand</author>
+      </titleStmt>
+      <publicationStmt>
+        <p/>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Document conforme aux guidelines de la TEI-P5</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <!-- Documentation en prose -->
+      <div>
+        <head>Création d'un ODD test à partir des données du projet LostMa</head>
+        <p>Ce schéma définit une customisation TEI pour l'encodage des données contenues dans les tables 'text' et 'stories'.</p>
+      </div>
+      
+      <!-- Spécification du schéma -->
+      <div>
+        <schemaSpec ident="test_lostma_text" start="TEI">
+          
+          <!-- Modules utilisés -->
+          
+          <moduleRef key="tei"/>
+          <!-- Importe l'entiereté du module tei -->
+          
+          <moduleRef key="core"
+            include="note bibl ref title author term list item
+            relatedItem desc head p"/>
+          <!-- Importe des éléments du module core -->
+          
+          <moduleRef key="textcrit"
+            include="listWit rdg rdgGrp variantEncoding wit witDetail witEnd witStart witness"/>
+          <elementSpec 
+            ident="witness"
+            mode="change"
+            module="textcrit">
+            <attList>
+              <attDef ident="corresp" mode="delete"/>
+              <attDef ident="cert" mode="delete"/>
+            </attList>
+          </elementSpec>
+          <!-- Revoir les éléments rdg + rdgGroup (peut-être pas nécessaires ?)-->
+          
+          <moduleRef key="header"
+            include="teiHeader fileDesc titleStmt publicationStmt
+            sourceDesc encodingDesc classDecl taxonomy
+            category catDesc idno profileDesc xenoData 
+            revisionDesc"/>
+          
+          <moduleRef key="msdescription"
+            include="msDesc msPart msIdentifier altIdentifier
+            collection repository msItem origDate origPlace
+            additional surrogates"/>
+          
+          <moduleRef key="textstructure"
+            include="TEI text body div"/>
+          
+          <moduleRef key="namesdates"
+            include="listPlace place listRelation orgName settlement listOrg org"/>
+          
+          <moduleRef key="linking"/>
+          
+        </schemaSpec>
+      </div>
+    </body>
+  </text>
+</TEI>

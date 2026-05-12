@@ -37,7 +37,7 @@
                 <p>Cette publication est un test de conformité de l'ODD witness_v3.</p>
             </publicationStmt>
             <sourceDesc>
-                <msDesc type="citation"><!-- is-excerpt="yes">-->
+                <msDesc type="citation">
                     <msIdentifier>
                         <idno type="heurist">55200</idno>
                     </msIdentifier>
@@ -54,7 +54,7 @@
                             <!--<idno heurist="55200"/>-->
                             <!--<idno type="current">ms Latin 16433</idno>
                             <idno type="old">ms Latin 16433</idno>-->
-                            <altIdentifier type="olim">
+                            <altIdentifier type="old-shelfmark">
                                 <idno>Regius 1432</idno>
                             </altIdentifier>
                         </msIdentifier>
@@ -78,7 +78,7 @@
                                 </layoutDesc>
                             </objectDesc>
                             <handDesc>
-                                <handNote script="cursiva:bastarda" scriptRef="" scribe="" scribeRef=""></handNote>
+                                <handNote script="cursiva:bastarda"></handNote>
                                 <handNote></handNote>
                             </handDesc>
                             <decoDesc>
