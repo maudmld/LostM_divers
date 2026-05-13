@@ -2,6 +2,7 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
    <teiHeader>
       <fileDesc xml:id="alexandre_test">
@@ -44,9 +45,65 @@
             <p>Information about the source</p>
          </sourceDesc>
       </fileDesc>
+      <encodingDesc>
+         <!-- pas de meilleure solution pour le moment mais à voir si c'est pas mieux de l'encoder dans l'ODD -->
+         <classDecl>
+            <taxonomy xml:id="genre">
+               <category xml:id="arthurian-romance">
+                  <desc>The genre of the text is arthurian romance.</desc>
+               </category>
+               <category xml:id="arthurroman">
+                  <desc>The genre of the text is arthurroman.</desc>
+               </category>
+               <category xml:id="carolingian-romance">
+                  <desc>The genre of the text is carolingian romance.</desc>
+               </category>
+               <category xml:id="karelepiek">
+                  <desc>The genre of the text is karelepiek.</desc>
+               </category>
+               <category xml:id="chanson-de-geste">
+                  <desc>The genre of the text is chanson de geste.</desc>
+               </category>
+               <category xml:id="chronique">
+                  <desc>The genre of the text is chronique.</desc>
+               </category>
+               <category xml:id="mise-en-prose">
+                  <desc>The genre of the text is mise en prose.</desc>
+               </category>
+               <category xml:id="roman">
+                  <desc>The genre of the text is roman.</desc>
+               </category>
+               <category xml:id="other">
+                  <desc>The genre of the text is other.</desc>
+               </category>
+               <!-- permet de gérer les nulls -->
+               <category xml:id="genre-unknown">
+                  <desc>The genre of the text is unknown.</desc>
+               </category>
+            </taxonomy>
+            <taxonomy xml:id="litterary-form">
+               <category xml:id="vers">
+                  <desc>The litterary form of the text is verse.</desc>
+               </category>
+               <category xml:id="prose">
+                  <desc>The litterary form of the text is prose.</desc>
+               </category>
+               <category xml:id="mixed">
+                  <desc>The litterary form of the text is mixed.</desc>
+               </category>
+               <category xml:id="form-unknown">
+                  <desc>The litterary form of the text is unknown.</desc>
+               </category>
+            </taxonomy>
+         </classDecl>
+      </encodingDesc>
       <profileDesc>
          <langUsage>
-            <language ident="fro">fro (Old French)</language> <!-- text_language MANQUE les info sur regional writing style et scripta-->
+            <language ident="fro">fro (Old French) <!-- language renvoie à l'attribut text_language (donc général au texte au niveau le plus haut) // -->
+               <lang style="regional">pic., fro (Old French)</lang> <!-- renvoie à regional_writing_style_name mais pas très clair non plus -->
+               <lang style="scripta">pic. (Tournai?) mil. 13es.</lang>  <!-- scripta_freetext : pas génial -->
+               <!-- + peut-être qu'il faut rajouter l'ID Heurist ? -->
+            </language> 
          </langUsage>
          <creation>
             <date from="1165" to="1200" cert="high" source="Arlima">Vers 1170</date>
@@ -66,11 +123,61 @@
             <preparedness/>
             <purpose/>
          </textDesc>
+         <particDesc>
+            <listPerson>
+               <person role="author">
+                  <p>Lambert le Tort, 1101 - 1150</p>
+                  <!-- trouver un moyen de rajouter text_author_freetext -->
+               </person>
+            </listPerson>
+         </particDesc>
+         <textClass>
+            <catRef scheme="#genre" target="roman"/>
+            <catRef scheme="#litterary-form" target="verse"/>
+         </textClass>
       </profileDesc>
   </teiHeader>
+  <standOff>
+     <listBibl type="storyverse">
+        <bibl xml:id="sv-alexandrian"> <!-- sv pour storyverse -->
+           <idno>47707</idno> <!-- storyverse Heurist ID (ajouter un @type="Heurist")-->
+           <name>Alexandrian</name>
+        </bibl>
+     </listBibl>
+     <listBibl type="story">
+        <bibl xml:id="s-alexandre-en-orient-iii"> <!-- s pour story -->
+           <idno>48494</idno> <!-- storyverse Heurist ID (ajouter un @type="Heurist")-->
+           <name>Alexandre en Orient (branch III)</name>
+        </bibl>
+     </listBibl>
+     <listRelation type="story-storyverse">
+        <relation name="is-member-of"
+           active="#s-alexandre-en-orient-iii"
+           passive="#sv-alexandrian"/>
+     </listRelation>
+     <listRelation type="story-text">
+        <relation name="is-realised-in"
+           active="#t-alexandre-en-orient"
+           passive="#s-alexandre-en-orient-iii"/>
+     </listRelation>
+  </standOff>
   <text>
       <body>
-         <p>Some text here.</p>
+         <graph>
+            <label></label>         <!-- ici intégrer les graph d'openstemmata -->
+            <node>
+               <label></label>
+            </node>
+            <node>
+               <label></label>
+            </node>
+            <node>
+               <label></label>
+            </node>
+            <node>
+               <label></label>
+            </node>
+         </graph>
       </body>
   </text>
 </TEI>
