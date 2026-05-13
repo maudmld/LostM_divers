@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+      <fileDesc xml:id="alexandre_test">
+         <titleStmt>
+            <title type="forged">[fragmentary] fro (Old French) Lambert le Tort, "Alexandre en Orient" (verse alexandrine full rhyme, 1165 to 1200)</title>
+            <title type="preferred">Alexandre en Orient</title>
+            <!-- manque un idno quelque part près du titre -->
+            <principal>
+               <persName>
+                  <forename>Jean-Baptiste</forename>
+                  <surname>Camps</surname>
+               </persName>
+            </principal>
+            <respStmt>
+               <resp>Editor of the French corpus</resp>
+               <persName xml:id="JBC">
+                  <forename>Jean-Baptiste</forename>
+                  <surname>Camps</surname>
+               </persName>
+            </respStmt>
+            <respStmt>
+               <resp>Data curator</resp>
+               <persName xml:id="VR">
+                  <forename>Virgile</forename>
+                  <surname>Reignier</surname>
+               </persName>
+            </respStmt>
+            <respStmt>
+               <resp>Contributor</resp>
+               <persName xml:id="EG">
+                  <forename>Émilie</forename>
+                  <surname>Guidi</surname>
+               </persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt>
+            <p>Cette publication est un test de conformité de l'ODD text.</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+      <profileDesc>
+         <langUsage>
+            <language ident="fro">fro (Old French)</language> <!-- text_language MANQUE les info sur regional writing style et scripta-->
+         </langUsage>
+         <creation>
+            <date from="1165" to="1200" cert="high" source="Arlima">Vers 1170</date>
+         </creation>
+         <textClass>
+            <keywords>
+               <term>verse</term>
+            </keywords>
+         </textClass>
+         <textDesc>
+            <channel/>
+            <constitution>fragmentary</constitution>
+            <derivation>might derive from a lost Robert de Boron verse text</derivation>
+            <domain/>
+            <factuality/>
+            <interaction/>
+            <preparedness/>
+            <purpose/>
+         </textDesc>
+      </profileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <p>Some text here.</p>
+      </body>
+  </text>
+</TEI>
