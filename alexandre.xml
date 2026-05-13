@@ -137,16 +137,16 @@
          </textClass>
       </profileDesc>
   </teiHeader>
-  <standOff>
+  <!--<standOff>
      <listBibl type="storyverse">
-        <bibl xml:id="sv-alexandrian"> <!-- sv pour storyverse -->
-           <idno>47707</idno> <!-- storyverse Heurist ID (ajouter un @type="Heurist")-->
+        <bibl xml:id="sv-alexandrian"> <!-\- sv pour storyverse -\->
+           <idno>47707</idno> <!-\- storyverse Heurist ID (ajouter un @type="Heurist")-\->
            <name>Alexandrian</name>
         </bibl>
      </listBibl>
      <listBibl type="story">
-        <bibl xml:id="s-alexandre-en-orient-iii"> <!-- s pour story -->
-           <idno>48494</idno> <!-- storyverse Heurist ID (ajouter un @type="Heurist")-->
+        <bibl xml:id="s-alexandre-en-orient-iii"> <!-\- s pour story -\->
+           <idno>48494</idno> <!-\- storyverse Heurist ID (ajouter un @type="Heurist")-\->
            <name>Alexandre en Orient (branch III)</name>
         </bibl>
      </listBibl>
@@ -160,23 +160,28 @@
            active="#t-alexandre-en-orient"
            passive="#s-alexandre-en-orient-iii"/>
      </listRelation>
-  </standOff>
+  </standOff>-->
   <text>
       <body>
-         <graph>
-            <label></label>         <!-- ici intégrer les graph d'openstemmata -->
-            <node>
-               <label></label>
+         <graph
+            xml:id="story-storyverse"
+            type="directed">
+            <label>Links between text, story and storyverse.</label>         <!-- ici intégrer les graph d'openstemmata -->
+            <node xml:id="text">
+               <label>Alexandre en Orient</label>
             </node>
-            <node>
-               <label></label>
+            <node xml:id="story">
+               <label>Alexandre en Orient (branch III)</label>
             </node>
-            <node>
-               <label></label>
+            <node xml:id="storyverse">
+               <label>Alexandrian</label>
             </node>
-            <node>
-               <label></label>
-            </node>
+            <arc from="#story" to="#text">
+               <label>is realised in</label>
+            </arc>
+            <arc from="#story" to="#storyverse">
+               <label>is a member of</label>
+            </arc>
          </graph>
       </body>
   </text>
