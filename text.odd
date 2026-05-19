@@ -45,6 +45,403 @@
           
           <moduleRef key="verse"/>
           
+          <moduleRef key="spoken"/>
+          
+          <moduleRef key="dictionaries"/>
+          
+          <moduleRef key="nets"/>
+         
+         
+          <!-- Module header -->
+          
+          <!-- teiHeader -->
+          
+          <elementSpec ident="teiHeader" mode="change">
+            <content>
+              <sequence>
+                <elementRef key="fileDesc"/>
+                <elementRef key="encodingDesc"/>
+                <elementRef key="profileDesc"/>
+              </sequence>
+            </content>
+          </elementSpec>
+          
+          <!-- fileDesc -->
+          
+          <elementSpec ident="fileDesc" mode="change">
+            <desc>The element fileDesc must always have @xml:id and accepts only titleStmt, publicationStmt and sourceDesc (optional) as child elements.</desc>
+            <content>
+              <sequence>
+                <elementRef key="titleStmt" minOccurs="1" maxOccurs="1"/>
+                <elementRef key="publicationStmt" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="sourceDesc" minOccurs="1" maxOccurs="1"/>
+              </sequence>
+            </content>
+            <attList>
+              <attDef ident="xml:id" mode="change" usage="req">
+                <desc>The attribute xml:id is required on fileDesc.</desc>
+                <datatype>
+                  <dataRef name="string"/>
+                </datatype>
+              </attDef>
+            </attList>
+            <remarks>
+              <p>This constraint is set in order to comply to DoTS's specifications.</p>
+            </remarks>
+          </elementSpec>
+          
+          <!-- titleStmt -->
+          
+          <elementSpec ident="titleStmt" mode="change">
+            <desc>The element titleStmt takes a required child-element title.</desc>
+            <content>
+              <sequence>
+                <elementRef key="title" minOccurs="1" maxOccurs="unbounded"/>
+                <elementRef key="principal" minOccurs="1" maxOccurs="1"/>
+                <elementRef key="respStmt" minOccurs="1" maxOccurs="unbounded"/>
+              </sequence>
+            </content>
+            <remarks>
+              <p>Title is required in order to comply to DoTS's requirements.</p>
+            </remarks>
+          </elementSpec>
+          
+          <!-- principal -->
+          
+          <elementSpec ident="principal" mode="change">
+            <desc>The element is used to contains the name of the researcher primarily responsible for the creation of an electronic text.</desc>
+            <content>
+              <elementRef key="persName" minOccurs="1" maxOccurs="1"/>
+            </content>
+          </elementSpec>
+          
+          <!-- persName -->
+          
+          <elementSpec ident="persName" mode="change">
+            <desc>The element is used to input a name. It takes children element forename and surname.</desc>
+            <content>
+              <sequence>
+                <elementRef key="forename" minOccurs="1" maxOccurs="1"/>
+                <elementRef key="surname" minOccurs="1" maxOccurs="1"/>
+              </sequence>
+            </content>
+          </elementSpec>
+          
+          <!-- respStmt -->
+          
+          <elementSpec ident="respStmt" mode="change">
+            <desc>The element is used to describe the people's responsability for the data. It allows children elements resp and persName.</desc>
+            <content>
+              <sequence>
+                <elementRef key="resp" minOccurs="1" maxOccurs="unbounded"/>
+                <elementRef key="persName" minOccurs="1" maxOccurs="unbounded"/>
+              </sequence>
+            </content>
+          </elementSpec>
+          
+          <!-- encodingDesc -->
+          
+          <elementSpec ident="encodingDesc" mode="change">
+            <desc>The element is used </desc>
+            <content>
+                <elementRef key="classDecl" minOccurs="1" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+          <!-- classDecl -->
+          
+          <elementSpec ident="classDecl" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="taxonomy" minOccurs="0" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+          <!-- taxonomy -->
+          
+          <elementSpec ident="taxonomy" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="category" minOccurs="1" maxOccurs="unbounded"/>
+            </content>
+            <attList>
+              <attDef ident="xml:id" mode="change" usage="req">
+                <datatype>
+                  <dataRef name="string"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
+          <!-- category -->
+          
+          <elementSpec ident="category" mode="change">
+          <desc></desc>
+          <content>
+            <elementRef key="desc" minOccurs="0" maxOccurs="unbounded"/>
+          </content>
+          <attList>
+            <attDef ident="xml:id" mode="change" usage="req">
+              <datatype>
+                <dataRef name="string"/>
+              </datatype>
+            </attDef>
+          </attList>
+          <remarks>
+            <p></p>
+          </remarks>
+          </elementSpec>
+          
+          <!-- profileDesc -->
+          
+          <elementSpec ident="profileDesc" mode="change">
+            <desc></desc>
+            <content>
+             <sequence>
+              <elementRef key="langUsage" minOccurs="1" maxOccurs="unbounded"/>
+               <elementRef key="creation" minOccurs="0" maxOccurs="unbounded"/>
+               <elementRef key="textClass" minOccurs="0" maxOccurs="unbounded"/>
+               <elementRef key="textDesc" minOccurs="0" maxOccurs="unbounded"/>
+               <elementRef key="particDesc" minOccurs="0" maxOccurs="unbounded"/>
+              </sequence>
+            </content>
+            <remarks>
+              <p></p>
+            </remarks>
+          </elementSpec>
+          
+          <!-- langUsage -->
+          
+          <elementSpec ident="langUsage" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="language" minOccurs="1" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+          <!-- language -->
+          
+          <elementSpec ident="language" mode="change">
+            <desc></desc>
+            <content>
+             <sequence>
+              <textNode/>
+              <elementRef key="lang" minOccurs="0" maxOccurs="unbounded"/>
+             </sequence>
+            </content>
+            <attList>
+            <attDef ident="ident" mode="change" usage="rec">
+              <datatype>
+                <dataRef name="string"/>
+              </datatype>
+            </attDef>
+            </attList>
+          </elementSpec>
+          
+          <!-- lang -->
+          
+          <elementSpec ident="lang" mode="change">
+            <content>
+              <textNode/>
+            </content>
+            <attList>
+              <attDef ident="type" mode="change" usage="opt">
+                <valList type="closed">
+                  <valItem ident="regional"/>
+                  <valItem ident="scripta"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
+          <!-- creation -->
+          
+          <elementSpec ident="creation" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+          <!-- date -->
+          
+          <elementSpec ident="date" mode="change">
+            <desc></desc>
+            <content>
+              <textNode/>
+            </content>
+            <attList>
+              <attDef ident="from" mode="change" usage="opt">
+                <desc></desc>
+              </attDef>
+              <attDef ident="to" mode="change" usage="opt">
+                <desc></desc>
+              </attDef>
+              <attDef ident="source" mode="change" usage="opt">
+                <desc></desc>
+              </attDef>
+              <attDef ident="cert" mode="change" usage="opt">
+                <valList type="closed">
+                  <valItem ident="unlikely">
+                    <desc>Unlikely (1%-33%)</desc>
+                  </valItem>
+                  <valItem ident="probable">
+                    <desc>Probable (33%-66%)</desc>
+                  </valItem>
+                  <valItem ident="very-likely">
+                    <desc>Very likely (66%-99%)</desc>
+                  </valItem>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
+          <!-- textClass -->
+          
+          <elementSpec ident="textClass" mode="change">
+            <desc></desc>
+            <content>
+              <sequence>
+                <elementRef key="keywords" minOccurs="0" maxOccurs="unbounded"/>
+                <elementRef key="catRef" minOccurs="0" maxOccurs="unbounded"/>
+              </sequence>
+            </content>
+          </elementSpec>
+          
+          <!-- keyword -->
+          
+          <elementSpec ident="keyword" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="term"/>
+            </content>
+          </elementSpec>
+          
+          <!-- catRef -->
+          
+          <elementSpec ident="catRef" mode="change">
+            <desc></desc>
+            <content>
+              <textNode/>
+            </content>
+            <attList>
+              <attDef ident="scheme" mode="change" usage="opt">
+                <desc></desc>
+              </attDef>
+              <attDef ident="target" mode="change" usage="opt">
+                <desc></desc>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
+          <!-- textDesc -->
+          
+          <elementSpec ident="textDesc" mode="change">
+            <desc></desc>
+            <content>
+              <sequence>
+                <elementRef key="channel" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="constitution" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="derivation" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="domain" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="factuality" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="interaction" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="preparedness" minOccurs="0" maxOccurs="1"/>
+                <elementRef key="purpose" minOccurs="0" maxOccurs="1"/>
+              </sequence>
+            </content>
+          </elementSpec>
+          
+          <!-- particDesc -->
+          
+          <elementSpec ident="particDesc" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="listPerson"/>
+            </content>
+          </elementSpec>
+          
+          <!-- listPerson -->
+          
+          <elementSpec ident="listPerson" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="person" minOccurs="0" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+          <!-- person -->
+         
+          <elementSpec ident="person" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="p" minOccurs="0" maxOccurs="unbounded"/>
+            </content>
+            <attList>
+              <attDef ident="role" mode="change" usage="req">
+                <desc></desc>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
+          
+          <!-- body -->
+          
+          <elementSpec ident="body" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="graph" minOccurs="0" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+        
+        
+          <!-- graph -->
+          
+        <elementSpec ident="graph" mode="change">
+           <desc></desc>
+          <content>
+           <sequence>
+            <elementRef key="label" minOccurs="1" maxOccurs="1"/>
+            <elementRef key="node" minOccurs="1" maxOccurs="unbounded"/>
+            <elementRef key="arc" minOccurs="0" maxOccurs="unbounded"/>
+           </sequence>
+          </content>
+          <attList>
+            <attDef ident="xml:id" mode="change" usage="req">
+              <datatype>
+                <dataRef name="string"/>
+              </datatype>
+            </attDef>
+            <attDef ident="type" mode="change" usage="req">
+              <datatype>
+                <dataRef name="string"/>
+              </datatype>
+            </attDef> 
+          </attList>
+        </elementSpec>
+        
+        <!-- arc -->
+          
+        <elementSpec ident="arc" mode="change">
+          <desc></desc>
+          <content>
+            <elementRef key="label" minOccurs="0" maxOccurs="unbounded"/>
+          </content>
+          <attList>
+            <attDef ident="to" mode="change" usage="opt">
+              <datatype>
+               <dataRef name="string"/>
+              </datatype>
+            </attDef>
+            <attDef ident="from" mode="change" usage="opt">
+              <datatype>
+                <dataRef name="string"/>
+              </datatype>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
+        
         </schemaSpec>
       </div>
     </body>
