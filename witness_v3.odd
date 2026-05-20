@@ -65,32 +65,41 @@
           <!-- l'élément remarks spécifie son utilisation vis-à-vis des données du projet : indique attribut et table de référence, explicite les choix scientifiques etc. -->
           <!-- toutes les listes de valeurs fermées et descriptions d'éléments proviennent du modèle de données publié sur https://lostma-erc.github.io/corpus/documentation/-->
           
-         
+
+          
+          <!-- TEI racine --> 
+          
+          <elementSpec ident="TEI" mode="change">
+            <desc></desc>
+            <content>
+              <sequence>
+                <elementRef key="teiHeader"/>
+                <elementRef key="text"/>
+              </sequence>
+            </content>
+            <attList>
+              <attDef ident="xml:id" mode="change">
+                <datatype>
+                  <dataRef name="ID"/>
+                </datatype>
+              </attDef>
+            </attList>
+          </elementSpec>
+          
           
           <!-- Module header -->
 
           <!-- fileDesc -->
 
           <elementSpec ident="fileDesc" mode="change">
-            <desc>The element fileDesc must always have @xml:id and accepts only titleStmt, publicationStmt and sourceDesc (optional) as child elements.</desc>
+            <desc>The element fileDesc accepts only titleStmt, publicationStmt and sourceDesc (optional) as child elements.</desc>
             <content>
               <sequence>
                 <elementRef key="titleStmt" minOccurs="1" maxOccurs="1"/>
                 <elementRef key="publicationStmt" minOccurs="0" maxOccurs="1"/>
                 <elementRef key="sourceDesc" minOccurs="1" maxOccurs="1"/>
               </sequence>
-            </content>
-            <attList>
-              <attDef ident="xml:id" mode="change" usage="req">
-                <desc>The attribute xml:id is required on fileDesc.</desc>
-                <datatype>
-                  <dataRef name="ID"/>
-                </datatype>
-              </attDef>
-            </attList>
-            <remarks>
-              <p>This constraint is set in order to comply to DoTS's specifications.</p>
-            </remarks>
+            </content>            
           </elementSpec>
           
           <!-- titleStmt -->

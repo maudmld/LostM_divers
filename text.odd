@@ -51,7 +51,26 @@
           
           <moduleRef key="nets"/>
          
-         
+         <!-- TEI racine --> 
+          
+         <elementSpec ident="TEI" mode="change">
+           <desc></desc>
+           <content>
+             <sequence>
+               <elementRef key="teiHeader"/>
+               <elementRef key="text"/>
+             </sequence>
+           </content>
+           <attList>
+             <attDef ident="xml:id" mode="change" usage="req">
+               <datatype>
+                 <dataRef name="ID"/>
+               </datatype>
+             </attDef>
+           </attList>
+         </elementSpec>
+          
+          
           <!-- Module header -->
           
           <!-- teiHeader -->
@@ -69,7 +88,7 @@
           <!-- fileDesc -->
           
           <elementSpec ident="fileDesc" mode="change">
-            <desc>The element fileDesc must always have @xml:id and accepts only titleStmt, publicationStmt and sourceDesc (optional) as child elements.</desc>
+            <desc>The element fileDesc accepts only titleStmt, publicationStmt and sourceDesc (optional) as child elements.</desc>
             <content>
               <sequence>
                 <elementRef key="titleStmt" minOccurs="1" maxOccurs="1"/>
@@ -77,17 +96,6 @@
                 <elementRef key="sourceDesc" minOccurs="1" maxOccurs="1"/>
               </sequence>
             </content>
-            <attList>
-              <attDef ident="xml:id" mode="change" usage="req">
-                <desc>The attribute xml:id is required on fileDesc.</desc>
-                <datatype>
-                  <dataRef name="string"/>
-                </datatype>
-              </attDef>
-            </attList>
-            <remarks>
-              <p>This constraint is set in order to comply to DoTS's specifications.</p>
-            </remarks>
           </elementSpec>
           
           <!-- titleStmt -->
@@ -144,7 +152,10 @@
           <elementSpec ident="encodingDesc" mode="change">
             <desc>The element is used </desc>
             <content>
-                <elementRef key="classDecl" minOccurs="1" maxOccurs="unbounded"/>
+              <sequence>
+               <elementRef key="classDecl" minOccurs="1" maxOccurs="unbounded"/>
+               <elementRef key="metDecl" minOccurs="0" maxOccurs="unbounded"/>
+              </sequence>
             </content>
           </elementSpec>
           
@@ -192,6 +203,16 @@
           </remarks>
           </elementSpec>
           
+          <!-- metDecl -->
+          
+          <elementSpec ident="metDecl" mode="change">
+            <desc></desc>
+            <content>
+              <elementRef key="metSym" minOccurs="0" maxOccurs="unbounded"/>
+            </content>
+          </elementSpec>
+          
+         
           <!-- profileDesc -->
           
           <elementSpec ident="profileDesc" mode="change">

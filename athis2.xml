@@ -3,9 +3,9 @@
             type="application/xml" 
             schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="athis_test">
    <teiHeader>
-      <fileDesc xml:id="athis_test">
+      <fileDesc>
          <titleStmt>
             <title>"Athis et Prophilias" (1201 to 1300) p, in ms Latin 16433</title>
             <principal>

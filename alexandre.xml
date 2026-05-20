@@ -6,7 +6,9 @@
 <!--<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+-->
+
 
 <!-- Questions pour JBC 
       1) Où mettre les stemmata ? Solution 1 = body/graph mais body n'est pas fait pour comporter de métadonnées
@@ -14,16 +16,16 @@
       2) A priori pas de code BCP47 pour les langues qu'on utilise : est-ce qu'on les indexe dans classDecl/taxonomy ? 
       Marche bien et prévu pour mais verbeux (alourdit les fichiers)
       
-      3) 
+      3) Manque encore les info relatives aux verse type, rhyme type, stanza type - à vérifier 
 
 --> 
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="alexandre_test">
    <teiHeader>
-      <fileDesc xml:id="alexandre_test">
+      <fileDesc>
          <titleStmt>
             <title type="forged">[fragmentary] fro (Old French) Lambert le Tort, "Alexandre en Orient" (verse alexandrine full rhyme, 1165 to 1200)</title>
             <title type="preferred">Alexandre en Orient</title>
-            <!-- manque un idno quelque part près du titre -->
+            <!-- ajout de l'Heurist ID pour le text dans @key mais à voir si on le met ailleurs ?  -->
             <principal>
                <persName>
                   <forename>Jean-Baptiste</forename>
@@ -110,19 +112,41 @@
                </category>
             </taxonomy>
          </classDecl>
+         <metDecl type="met"> <!-- Poser la question à JBC sur la concordance--> 
+            <metSym value="alexandrine"/>
+            <metSym value="decasyllabe"/>
+            <metSym value="hexasyllabe"/>
+            <metSym value="octosyllabe"/>
+            <metSym value="iambic"/>
+            <metSym value="petit-vers"/>
+         </metDecl>
+         <metDecl type="rhyme">
+            <metSym value="aliteration"/>
+            <metSym value="full-rhyme"/>
+            <metSym value="assonance"/>
+            <metSym value="unknown"/>
+         </metDecl>
+         <metDecl type="real">
+            <metSym value="null"/>
+            <metSym value="monoryhme"/>
+            <metSym value="laisse"/>
+         </metDecl>
       </encodingDesc>
       <profileDesc>
          <langUsage>
             <language ident="fro">fro (Old French)
             <!-- language renvoie à l'attribut text_language (donc général au texte au niveau le plus haut) // -->
-               <lang n="regional">pic., fro (Old French)</lang> <!-- renvoie à regional_writing_style_name mais pas très clair non plus -->
-               <note>pic. (Tournai?) mil. 13es.</note>  
-               <!-- + peut-être qu'il faut rajouter l'ID Heurist ? -->
+               <lang>pic., fro (Old French)</lang>
+               <!-- renvoie à regional_writing_style_name mais pas très clair non plus -->
+               <note type="scripta">pic. (Tournai?) mil. 13es.</note>  
+               <!-- BCP 47 permet d'encoder des variantes régionales via des sous-tags :
+               xml<language ident="fro-x-picard">fro (Old French), scripta picarde</language>
+                sous-tag x- est la zone privée de BCP 47 : standard mais + précis pour une scripta -->
               </language>
          </langUsage>
          <creation>
             <!-- La seule erreur qui sort lorsqu'on passe de l'ODD à la TEI All est la valeur de @cert (qui ne prend que high/low/medium)
-               dans la TEI canonique donc modif des données ? -->
+               dans la TEI canonique donc modif des données (very-likely devient high) -->
             <date from="1165" to="1200" cert="high" source="Arlima">Vers 1170</date>
             <placeName>Tournai</placeName>
          </creation>
@@ -134,12 +158,15 @@
          <textClass>
             <catRef scheme="#genre" target="roman"/>
             <catRef scheme="#litterary-form" target="verse"/>
+            <catRef scheme="#met" target="decasyllabe"/>
+            <catRef scheme="#rhyme" target="aliteration"/>
+            <catRef scheme="#real" target="monoryhme"/>
          </textClass>
          <textDesc>
             <channel/>
             <constitution>fragmentary</constitution>
-            <derivation xml:id="hid_496">might derive from a lost Robert de Boron verse text</derivation>
-            <!-- xml:id ne prend jamais un integer simple (standard XML) donc solution d'ajouter H-ID devant chaque integer -->
+            <derivation corresp="496">might derive from a lost Robert de Boron verse text</derivation>
+            <!-- utilisation de @corresp pour renvoyer au H-ID du texte lié -->
             <domain/>
             <factuality/>
             <interaction/>
