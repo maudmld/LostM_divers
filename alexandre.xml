@@ -3,15 +3,20 @@
    type="application/xml" 
    schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<!--
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>-->
 
+<!-- Questions pour JBC 
+      1) Où mettre les stemmata ? Solution 1 = body/graph mais body n'est pas fait pour comporter de métadonnées
+                                  Solutuion 2 = TEI/standOff/graph 
+      2) A priori pas de code BCP47 pour les langues qu'on utilise : est-ce qu'on les indexe dans classDecl/taxonomy ? 
+      Marche bien et prévu pour mais verbeux (alourdit les fichiers)
+      
+      3) 
 
-
-
+--> 
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
    <teiHeader>
       <fileDesc xml:id="alexandre_test">
@@ -111,15 +116,15 @@
             <language ident="fro">fro (Old French)
             <!-- language renvoie à l'attribut text_language (donc général au texte au niveau le plus haut) // -->
                <lang n="regional">pic., fro (Old French)</lang> <!-- renvoie à regional_writing_style_name mais pas très clair non plus -->
-               <lang n="scripta">pic. (Tournai?) mil. 13es.</lang>  <!-- Pas contente de cette solution du @n mais 
-                  après avoir vérifié tous les @canoniques rien ne semble vraiment correspondre. Utilisé pour scripta_freetext : pas génial -->
+               <note>pic. (Tournai?) mil. 13es.</note>  
                <!-- + peut-être qu'il faut rajouter l'ID Heurist ? -->
               </language>
          </langUsage>
          <creation>
             <!-- La seule erreur qui sort lorsqu'on passe de l'ODD à la TEI All est la valeur de @cert (qui ne prend que high/low/medium)
-               dans la TEI canonique : est-ce qu'on modifie les données ? -->
-            <date from="1165" to="1200" cert="very-likely" source="Arlima">Vers 1170</date>
+               dans la TEI canonique donc modif des données ? -->
+            <date from="1165" to="1200" cert="high" source="Arlima">Vers 1170</date>
+            <placeName>Tournai</placeName>
          </creation>
          <textClass>
             <keywords>
@@ -133,7 +138,8 @@
          <textDesc>
             <channel/>
             <constitution>fragmentary</constitution>
-            <derivation>might derive from a lost Robert de Boron verse text</derivation>
+            <derivation xml:id="hid_496">might derive from a lost Robert de Boron verse text</derivation>
+            <!-- xml:id ne prend jamais un integer simple (standard XML) donc solution d'ajouter H-ID devant chaque integer -->
             <domain/>
             <factuality/>
             <interaction/>
@@ -144,7 +150,6 @@
             <listPerson>
                <person role="author">
                   <p>Lambert le Tort, 1101 - 1150</p>
-                  <!-- trouver un moyen de rajouter text_author_freetext -->
                </person>
             </listPerson>
          </particDesc>

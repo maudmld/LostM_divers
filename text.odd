@@ -227,6 +227,7 @@
              <sequence>
               <textNode/>
               <elementRef key="lang" minOccurs="0" maxOccurs="unbounded"/>
+              <elementRef key="note" minOccurs="0" maxOccurs="unbounded"/>
              </sequence>
             </content>
             <attList>
@@ -248,7 +249,6 @@
               <attDef ident="type" mode="change" usage="opt">
                 <valList type="closed">
                   <valItem ident="regional"/>
-                  <valItem ident="scripta"/>
                 </valList>
               </attDef>
             </attList>
@@ -259,7 +259,10 @@
           <elementSpec ident="creation" mode="change">
             <desc></desc>
             <content>
+             <sequence>
               <elementRef key="date" minOccurs="1" maxOccurs="unbounded"/>
+              <elementRef key="placeName" minOccurs="0" maxOccurs="unbounded"/>
+             </sequence>
             </content>
           </elementSpec>
           
@@ -282,13 +285,13 @@
               </attDef>
               <attDef ident="cert" mode="change" usage="opt">
                 <valList type="closed">
-                  <valItem ident="unlikely">
+                  <valItem ident="low">
                     <desc>Unlikely (1%-33%)</desc>
                   </valItem>
-                  <valItem ident="probable">
+                  <valItem ident="medium">
                     <desc>Probable (33%-66%)</desc>
                   </valItem>
-                  <valItem ident="very-likely">
+                  <valItem ident="high">
                     <desc>Very likely (66%-99%)</desc>
                   </valItem>
                 </valList>
