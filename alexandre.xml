@@ -3,12 +3,6 @@
    type="application/xml" 
    schematypens="http://relaxng.org/ns/structure/1.0"?>
 
-<!--<?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
--->
-
 
 <!-- Questions pour JBC 
       1) Où mettre les stemmata ? Solution 1 = body/graph mais body n'est pas fait pour comporter de métadonnées
@@ -16,7 +10,7 @@
       2) A priori pas de code BCP47 pour les langues qu'on utilise : est-ce qu'on les indexe dans classDecl/taxonomy ? 
       Marche bien et prévu pour mais verbeux (alourdit les fichiers)
       
-      3) Manque encore les info relatives aux verse type, rhyme type, stanza type - à vérifier 
+      3) Info relatives aux verse type, rhyme type, stanza type - à vérifier 
 
 --> 
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="alexandre_test">
@@ -111,8 +105,30 @@
                   <desc>The litterary form of the text is unknown.</desc>
                </category>
             </taxonomy>
+            <!-- Utilisation de l'élément taxonomy qui permet de contourner le problème que pose metDecl (qui s'applique canoniquement
+            aux données et pas aux métadonnées seulement. -->
+            <taxonomy xml:id="versification">
+               <category xml:id="alexandrine"/>
+               <category xml:id="decasyllabe"/>
+               <category xml:id="hexasyllabe"/>
+               <category xml:id="octosyllabe"/>
+               <category xml:id="iambic"/>
+               <category xml:id="petit-vers"/>
+            </taxonomy>
+            <taxonomy xml:id="rhyme">
+               <category xml:id="aliteration"/>
+               <category xml:id="full-rhyme"/>
+               <category xml:id="assonance"/>
+               <category xml:id="unknown"/>
+            </taxonomy>
+            <taxonomy xml:id="stanza">
+               <category xml:id="null"/>
+               <category xml:id="monorhyme"/>
+               <category xml:id="laisse"/>
+            </taxonomy>
          </classDecl>
-         <metDecl type="met"> <!-- Poser la question à JBC sur la concordance--> 
+         <!--<metDecl type="met"> <!-\- A priori pas conforme et pas adapté au fait qu'on ai pas de 
+                                          données et seulement des métadonnées-\-> 
             <metSym value="alexandrine"/>
             <metSym value="decasyllabe"/>
             <metSym value="hexasyllabe"/>
@@ -130,7 +146,7 @@
             <metSym value="null"/>
             <metSym value="monoryhme"/>
             <metSym value="laisse"/>
-         </metDecl>
+         </metDecl>-->
       </encodingDesc>
       <profileDesc>
          <langUsage>
@@ -148,7 +164,8 @@
             <!-- La seule erreur qui sort lorsqu'on passe de l'ODD à la TEI All est la valeur de @cert (qui ne prend que high/low/medium)
                dans la TEI canonique donc modif des données (very-likely devient high) -->
             <date from="1165" to="1200" cert="high" source="Arlima">Vers 1170</date>
-            <placeName>Tournai</placeName>
+            <!-- est-ce qu'on rajoute une source pour placeName ? Dans le data model mais pas dans la release-->
+            <placeName source="Arlima">Tournai</placeName>
          </creation>
          <textClass>
             <keywords>
@@ -158,9 +175,9 @@
          <textClass>
             <catRef scheme="#genre" target="roman"/>
             <catRef scheme="#litterary-form" target="verse"/>
-            <catRef scheme="#met" target="decasyllabe"/>
+            <catRef scheme="#versification" target="decasyllabe"/>
             <catRef scheme="#rhyme" target="aliteration"/>
-            <catRef scheme="#real" target="monoryhme"/>
+            <catRef scheme="#stanza" target="monoryhme"/>
          </textClass>
          <textDesc>
             <channel/>
