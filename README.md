@@ -1,7 +1,3 @@
-Ce repository contient les fichiers relatifs à la création d'un modèle de données canonique au format TEI pour les données de l'ERC LostMa. 
-Les deux ODD text et witness modélisent les données de la release (cf. Github du projet) et sont donnés à voir dans deux fichiers XML 
-tests (dont les données sont partiellement issues de la base de données Heurist). 
-athis.xml fonctionne comme exemple de l'ODD witness ; alexandre.xml est l'application de l'ODD text. 
+This repository contains files related to the creation of a canonical data model in TEI format for the ERC LostMa project data. The two ODDs — text and witness — model the data from the release (see the project's GitHub) and are illustrated by two XML test files (whose data are partially drawn from the Heurist database). athis.xml serves as an example of the witness ODD; alexandre.xml is an application of the text ODD.
 
-Toutes les données du projet sont accessibles sur la base de données hébergée sur [Heurist](https://heurist.huma-num.fr/heurist/?db=jbcamps_gestes&w=a&q=t%3A101) 
-et sur la page [Github](https://github.com/LostMa-ERC) du projet.
+All project data are available on the database hosted on [Heurist](https://heurist.huma-num.fr/heurist/?db=jbcamps_gestes&w=a&q=t%3A101) and on the project's [Github](https://github.com/LostMa-ERC).
